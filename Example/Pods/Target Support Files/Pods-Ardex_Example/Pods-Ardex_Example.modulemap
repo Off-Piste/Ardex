@@ -1,0 +1,6 @@
+framework module Pods_Ardex_Example {
+  umbrella header "Pods-Ardex_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

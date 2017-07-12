@@ -1,0 +1,26 @@
+PODS:
+  - Ardex (0.1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - Kiwi (2.4.0)
+
+DEPENDENCIES:
+  - Ardex (from `../`)
+  - FBSnapshotTestCase
+  - Kiwi
+
+EXTERNAL SOURCES:
+  Ardex:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Ardex: 31f41b1a76efcd0368c3f62f3e41f047e0c59ec6
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+
+PODFILE CHECKSUM: ca19c5905b2ee4d77220cbc5b042c92911008912
+
+COCOAPODS: 1.2.0.beta.3
