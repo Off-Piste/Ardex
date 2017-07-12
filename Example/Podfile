@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'Ardex_Example' do
+  pod 'Ardex', :path => '../'
+
+  target 'Ardex_Tests' do
+    inherit! :search_paths
+
+    pod 'Kiwi'
+  pod 'FBSnapshotTestCase'
+  end
+end
