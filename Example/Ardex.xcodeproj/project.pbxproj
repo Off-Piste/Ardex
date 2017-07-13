@@ -40,7 +40,7 @@
 		002264195DAFCEA0B72BE315 /* Pods_Ardex_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ardex_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CAF7145EB2DFB1D982C0219 /* Pods-Ardex_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ardex_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ardex_Example/Pods-Ardex_Example.release.xcconfig"; sourceTree = "<group>"; };
 		3BC127B90014B91E95199BE9 /* Pods-Ardex_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ardex_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ardex_Tests/Pods-Ardex_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		55742F6A4AF6A82A16D8D0B9 /* Ardex.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Ardex.podspec; path = ../Ardex.podspec; sourceTree = "<group>"; };
+		55742F6A4AF6A82A16D8D0B9 /* Ardex.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Ardex.podspec; path = ../Ardex.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		59BFC347BA218DD373FBD36F /* Pods-Ardex_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ardex_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ardex_Example/Pods-Ardex_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Ardex_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ardex_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,10 +63,10 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		7083833F7120B8B4F4C1F20B /* Pods_Ardex_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ardex_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		739663B00A37A69F539B734F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		739663B00A37A69F539B734F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		933B673EC318A24218E941EC /* Pods-Ardex_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ardex_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ardex_Tests/Pods-Ardex_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		F373F61BC7C11DE6DFB982DB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F373F61BC7C11DE6DFB982DB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

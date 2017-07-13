@@ -11,14 +11,35 @@
 NS_SWIFT_NAME(CollectionViewCell)
 @interface ADXCollectionViewCell : UICollectionViewCell
 
+/** 
+ The datasource item that is set to the cell, currently set as `id` so will 
+ need to be casted to required model, also calls the `configCell()` 
+ method upon setting.
+ */
 @property (strong, nullable, nonatomic) id datasourceItem;
 
+/**
+ The Cells ReuseID
+
+ @return ReuseID
+ */
 + (NSString * _Nonnull)reuseID;
 
+/**
+ The Cells ReuseID
+ 
+ @return ReuseID
+ */
 - (NSString * _Nonnull)reuseID;
 
+/**
+ Override me and place all your programatical view elements in here!
+ */
 - (void)configureCell;
 
+/**
+ Override me and use me to change elements
+ */
 - (void)setupViews;
 
 @end

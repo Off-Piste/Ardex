@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Ardex: 31f41b1a76efcd0368c3f62f3e41f047e0c59ec6
+  Ardex: b59ad2cd80babf237db67cd5d83ff2095e1b91d0
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
 

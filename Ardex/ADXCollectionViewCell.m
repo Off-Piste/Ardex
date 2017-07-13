@@ -29,16 +29,6 @@
     [self configureCell];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    return self;
-}
-
 - (void)setupViews { }
 
 - (void)configureCell { }

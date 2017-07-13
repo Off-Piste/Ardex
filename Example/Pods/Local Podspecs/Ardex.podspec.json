@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of Ardex.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/harrytwright/Ardex",
+  "homepage": "https://github.com/Off-Piste/Ardex",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,12 @@
     "harrytwright": "haroldtomwright@gmail.com"
   },
   "source": {
-    "git": "https://github.com/harrytwright/Ardex.git",
+    "git": "https://github.com/Off-Piste/Ardex.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "Ardex/Classes/**/*"
+  "source_files": "Ardex/**/**/*",
+  "public_header_files": "Ardex/Public/**/**/*.h"
 }

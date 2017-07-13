@@ -21,22 +21,15 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/harrytwright/Ardex'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/Off-Piste/Ardex'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'harrytwright' => 'haroldtomwright@gmail.com' }
-  s.source           = { :git => 'https://github.com/harrytwright/Ardex.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/Off-Piste/Ardex.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Ardex/Classes/**/*'
+  s.source_files = 'Ardex/**/**/*'
+  s.public_header_files = 'Ardex/Public/**/**/*.h'
+  # s.private_header_files = 'Ardex/Private/**/**/*.h'
   
-  # s.resource_bundles = {
-  #   'Ardex' => ['Ardex/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
