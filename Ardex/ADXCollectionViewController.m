@@ -45,14 +45,14 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    __block ADXCollectionViewCell *cell;
-    if ([self.datasource cellClasses].firstObject) {
-        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) [self.datasource cellClasses].firstObject;
-        NSString *reuseID = [classes reuseID];
+    ADXCollectionViewCell * _Nonnull cell;
+    if ([self.datasource collectionCellClasses].firstObject) {
+        ADXCollectionViewCell *classes = [self.datasource collectionCellClasses].firstObject;
+        NSString *reuseID = classes.reuseID;
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID
                                                          forIndexPath:indexPath];
-    } else if ([self.datasource cellClasses].count > indexPath.section) {
-        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) [self.datasource cellClasses][indexPath.section];
+    } else if ([self.datasource collectionCellClasses].count > indexPath.section) {
+        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) [self.datasource collectionCellClasses][indexPath.section];
         NSString *reuseID = [classes reuseID];
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID
                                                          forIndexPath:indexPath];

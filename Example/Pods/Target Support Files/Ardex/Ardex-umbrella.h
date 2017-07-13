@@ -15,6 +15,7 @@
 #import "ADXCollectionViewCell.h"
 #import "ADXCollectionViewController.h"
 #import "ADXDatasource.h"
+#import "UICollectionView+Registerable.h"
 #import "UIView+Anchoring.h"
 
 FOUNDATION_EXPORT double ArdexVersionNumber;

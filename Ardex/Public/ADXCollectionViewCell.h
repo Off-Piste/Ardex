@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 NS_SWIFT_NAME(CollectionViewCell)
 @interface ADXCollectionViewCell : UICollectionViewCell
 
@@ -18,19 +20,9 @@ NS_SWIFT_NAME(CollectionViewCell)
  */
 @property (strong, nullable, nonatomic) id datasourceItem;
 
-/**
- The Cells ReuseID
+@property (strong, nonnull, readonly) NSString* reuseID;
 
- @return ReuseID
- */
-+ (NSString * _Nonnull)reuseID;
-
-/**
- The Cells ReuseID
- 
- @return ReuseID
- */
-- (NSString * _Nonnull)reuseID;
++ (NSString*)reuseID;
 
 /**
  Override me and place all your programatical view elements in here!
@@ -43,3 +35,5 @@ NS_SWIFT_NAME(CollectionViewCell)
 - (void)setupViews;
 
 @end
+
+NS_ASSUME_NONNULL_END

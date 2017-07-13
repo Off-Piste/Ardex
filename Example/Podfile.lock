@@ -1,16 +1,12 @@
 PODS:
   - Ardex (0.1.0)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - Kiwi (2.4.0)
+  - Nimble (7.0.1)
+  - Quick (1.1.0)
 
 DEPENDENCIES:
   - Ardex (from `../`)
-  - FBSnapshotTestCase
-  - Kiwi
+  - Nimble
+  - Quick
 
 EXTERNAL SOURCES:
   Ardex:
@@ -18,9 +14,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Ardex: b59ad2cd80babf237db67cd5d83ff2095e1b91d0
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: ca19c5905b2ee4d77220cbc5b042c92911008912
+PODFILE CHECKSUM: fc7a4b49114b5b621d04618e27965348cf62ab28
 
 COCOAPODS: 1.2.0.beta.3

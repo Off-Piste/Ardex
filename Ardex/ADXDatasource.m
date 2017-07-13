@@ -16,17 +16,14 @@
     }
     
     self->_objects = objects;
-    
-    if (self.tableView)
-        [self.tableView reloadData];
-    else if (self.collectionView)
-        [self.collectionView reloadData];
+    [self reload];
 }
 
 - (instancetype)init {
     [NSException raise:NSGenericException
-                format:@"Please use `initWithTableView:` "
-                       @"or `initWithCollectionView:` instead"];
+            format:@"Please use `initWithTableView:` "
+                   @"or `initWithCollectionView:` instead"];
+    
     return nil;
 }
 
@@ -71,8 +68,20 @@
     }
 }
 
-- (NSArray<CellClass> *)cellClasses {
-    return @[[ADXCollectionViewCell class]];
+- (NSArray<id> *)collectionCellClasses {
+    return @[[ADXBasicCell copy]];
+}
+
+- (void)reload {
+    if (self.tableView) {
+        [self.tableView reloadData];
+    } else if (self.collectionView) {
+        [self.collectionView reloadData];
+    } else {
+        [NSException raise:NSGenericException
+                    format:@"The UITableView or UICollectionView needs to "
+                           @"be set before the objects"];
+    }
 }
 
 @end

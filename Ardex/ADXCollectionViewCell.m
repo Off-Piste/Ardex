@@ -15,7 +15,25 @@
 }
 
 - (NSString *)reuseID {
-    return [ADXCollectionViewCell reuseID];
+    return @"Cell";
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+//        aCell = self;
+    }
+    
+    return self;
 }
 
 - (void)setDatasourceItem:(id)datasourceItem {

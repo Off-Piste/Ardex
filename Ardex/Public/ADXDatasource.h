@@ -9,10 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ADXCollectionViewCell.h"
+#import "ADXBasicCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-typedef Class CellClass;
 
 /**
  <#Description#>
@@ -50,7 +49,7 @@ NS_SWIFT_NAME(Datasource)
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath NS_SWIFT_NAME(item(at:));
 
-- (NSArray<CellClass> * _Nonnull)cellClasses;
+- (NSArray<id> * _Nonnull)collectionCellClasses;
 
 @end
 

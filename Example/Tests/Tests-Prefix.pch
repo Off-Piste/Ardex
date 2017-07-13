@@ -2,7 +2,8 @@
 
 #ifdef __OBJC__
 
-  @import Kiwi;
-  @import FBSnapshotTestCase;
+  @import Quick;
+  @import Nimble;
+  @import Ardex;
 
 #endif

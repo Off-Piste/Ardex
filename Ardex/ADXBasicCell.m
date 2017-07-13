@@ -10,7 +10,13 @@
 
 @implementation ADXBasicCell
 
++ (NSString *)reuseID {
+    return @"BasicCell";
+}
+
 - (void)configureCell {
+    [super configureCell];
+    
     BOOL test = [self.datasourceItem isKindOfClass:[NSString class]];
     if (test) {
         NSString *value = self.datasourceItem;
