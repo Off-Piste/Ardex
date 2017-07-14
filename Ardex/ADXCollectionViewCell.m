@@ -14,14 +14,10 @@
     return @"Cell";
 }
 
-- (NSString *)reuseID {
-    return @"Cell";
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
+//        self->_reuseID = [ADXCollectionViewCell reuseID];
     }
     
     return self;
@@ -30,7 +26,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-//        aCell = self;
+//        self->_reuseID = [ADXCollectionViewCell reuseID];
     }
     
     return self;

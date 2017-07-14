@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     self.datasource = [[ADXDatasource alloc] initWithCollectionView:self.collectionView];
-    [self.datasource setObjects:@[@"Hello", @"World"]];
+    (self.datasource).objects = @[@"Hello", @"World"];
 }
 
 @end

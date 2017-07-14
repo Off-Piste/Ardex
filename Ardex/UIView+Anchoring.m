@@ -19,7 +19,7 @@
     for (UIView *arg = views; arg != nil; arg = va_arg(args, UIView*)) {
         
         NSString *key = [NSString stringWithFormat:@"v%@",
-                         [NSNumber numberWithInteger:*index].stringValue];
+                         @(*index).stringValue];
         [viewsDictionary setValue:arg forKeyPath:key];
         [arg setTranslatesAutoresizingMaskIntoConstraints:NO];
         index++;
@@ -35,11 +35,11 @@
 
 - (void)fillSuperview {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-    if ([self superview]) {
-        [[[self leftAnchor] constraintEqualToAnchor:self.superview.leftAnchor] setActive:YES];
-        [[[self rightAnchor] constraintEqualToAnchor:self.superview.rightAnchor] setActive:YES];
-        [[[self topAnchor] constraintEqualToAnchor:self.superview.topAnchor] setActive:YES];
-        [[[self bottomAnchor] constraintEqualToAnchor:self.superview.bottomAnchor] setActive:YES];
+    if (self.superview) {
+        [[self.leftAnchor constraintEqualToAnchor:self.superview.leftAnchor] setActive:YES];
+        [[self.rightAnchor constraintEqualToAnchor:self.superview.rightAnchor] setActive:YES];
+        [[self.topAnchor constraintEqualToAnchor:self.superview.topAnchor] setActive:YES];
+        [[self.bottomAnchor constraintEqualToAnchor:self.superview.bottomAnchor] setActive:YES];
     }
 }
 
@@ -106,8 +106,8 @@
 - (void)anchorCenterXToSuperviewWithConstant:(CGFloat)aConstant {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    if ([self.superview centerXAnchor]) {
-        NSLayoutXAxisAnchor *anchor = [self.superview centerXAnchor];
+    if ((self.superview).centerXAnchor) {
+        NSLayoutXAxisAnchor *anchor = (self.superview).centerXAnchor;
         [self.centerXAnchor constraintEqualToAnchor:anchor constant:aConstant];
     }
 }
@@ -115,8 +115,8 @@
 - (void)anchorCenterYToSuperviewWithConstant:(CGFloat)aConstant {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    if ([self.superview centerYAnchor]) {
-        NSLayoutYAxisAnchor *anchor = [self.superview centerYAnchor];
+    if ((self.superview).centerYAnchor) {
+        NSLayoutYAxisAnchor *anchor = (self.superview).centerYAnchor;
         [self.centerYAnchor constraintEqualToAnchor:anchor constant:aConstant];
     }
 }

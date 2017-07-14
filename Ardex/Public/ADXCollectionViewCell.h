@@ -10,6 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/**
+ <#Description#>
+ */
 NS_SWIFT_NAME(CollectionViewCell)
 @interface ADXCollectionViewCell : UICollectionViewCell
 
@@ -20,8 +24,12 @@ NS_SWIFT_NAME(CollectionViewCell)
  */
 @property (strong, nullable, nonatomic) id datasourceItem;
 
-@property (strong, nonnull, readonly) NSString* reuseID;
+/**
+ The cells reuse identifier, override this is you want a custom
+ identifier.
 
+ @return The cells reuse identifier.
+ */
 + (NSString*)reuseID;
 
 /**

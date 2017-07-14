@@ -32,7 +32,7 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.adxDatasource numberOfSections];
+    return (self.adxDatasource).numberOfSections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -43,14 +43,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     __block ADXCollectionViewCell *cell;
-    if ([self.adxDatasource collectionCellClasses].firstObject) {
-        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) [self.adxDatasource collectionCellClasses].firstObject;
-        NSString *reuseID = [classes reuseID];
+    if ((self.adxDatasource).collectionCellClasses.firstObject) {
+        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) (self.adxDatasource).collectionCellClasses.firstObject;
+        NSString *reuseID = [[classes class] reuseID];
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID
                                                          forIndexPath:indexPath];
-    } else if ([self.adxDatasource collectionCellClasses].count > indexPath.section) {
-        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) [self.adxDatasource collectionCellClasses][indexPath.section];
-        NSString *reuseID = [classes reuseID];
+    } else if ((self.adxDatasource).collectionCellClasses.count > indexPath.section) {
+        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) (self.adxDatasource).collectionCellClasses[indexPath.section];
+        NSString *reuseID = [[classes class] reuseID];
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID
                                                          forIndexPath:indexPath];
     } else {
@@ -58,7 +58,7 @@
         return cell;
     }
     
-    [cell setDatasourceItem:[self.adxDatasource itemAtIndexPath:indexPath]];
+    cell.datasourceItem = [self.adxDatasource itemAtIndexPath:indexPath];
     return cell;
 }
 

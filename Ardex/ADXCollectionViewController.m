@@ -35,7 +35,7 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.datasource numberOfSections];
+    return (self.datasource).numberOfSections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -46,14 +46,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ADXCollectionViewCell * _Nonnull cell;
-    if ([self.datasource collectionCellClasses].firstObject) {
-        ADXCollectionViewCell *classes = [self.datasource collectionCellClasses].firstObject;
-        NSString *reuseID = classes.reuseID;
+    if ((self.datasource).collectionCellClasses.firstObject) {
+        ADXCollectionViewCell *classes = (self.datasource).collectionCellClasses.firstObject;
+        NSString *reuseID = [[classes class] reuseID];
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID
                                                          forIndexPath:indexPath];
-    } else if ([self.datasource collectionCellClasses].count > indexPath.section) {
-        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) [self.datasource collectionCellClasses][indexPath.section];
-        NSString *reuseID = [classes reuseID];
+    } else if ((self.datasource).collectionCellClasses.count > indexPath.section) {
+        ADXCollectionViewCell *classes = (ADXCollectionViewCell *) (self.datasource).collectionCellClasses[indexPath.section];
+        NSString *reuseID = [[classes class] reuseID];
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID
                                                          forIndexPath:indexPath];
     } else {
@@ -61,7 +61,7 @@
         return cell;
     }
     
-    [cell setDatasourceItem:[_datasource itemAtIndexPath:indexPath]];
+    cell.datasourceItem = [_datasource itemAtIndexPath:indexPath];
     return cell;
 }
 

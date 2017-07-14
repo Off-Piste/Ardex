@@ -43,13 +43,13 @@ NS_SWIFT_NAME(Datasource)
 
 #pragma mark - Datasource Methods
 
-- (long)numberOfSections;
+@property (NS_NONATOMIC_IOSONLY, readonly) long numberOfSections;
 
 - (long)numberOfItemsInSection:(long)section NS_SWIFT_NAME(numberOfItems(in:));
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath NS_SWIFT_NAME(item(at:));
 
-- (NSArray<id> * _Nonnull)collectionCellClasses;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id> * _Nonnull collectionCellClasses;
 
 @end
 

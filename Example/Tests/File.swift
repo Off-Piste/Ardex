@@ -8,6 +8,21 @@
 
 import Ardex
 
-class Cell: ADXBasicCell {
+class datasource : Datasource {
     
+    override var collectionCellClasses: [Any] {
+        return []
+    }
+    
+    override var numberOfSections: Int {
+        return objects.count
+    }
+    
+    override func numberOfItems(in section: Int) -> Int {
+        return objects.count
+    }
+    
+    override func item(at indexPath: IndexPath) -> Any {
+        return objects[indexPath.row]
+    }
 }
