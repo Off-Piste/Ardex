@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ADXDatasource.h"
 #import "ADXTableViewCell.h"
+#import <asl.h>
 
 @interface ADXTableViewController : UITableViewController
 

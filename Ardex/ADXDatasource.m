@@ -12,6 +12,7 @@
 
 - (void)setObjects:(NSArray<id> *)objects {
     if (objects.count == 0) {
+        NSLog(@"[Ardex] Objects passed though (%s) were empty", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -33,6 +34,10 @@
 
 - (instancetype)initWithTableView:(UITableView *)tableView
                           objects:(NSArray<id> *)objects {
+    if (self.collectionView) {
+        [NSException raise:NSInvalidArgumentException format:@""];
+    }
+    
     self->_tableView = tableView;
     self->_objects = objects;
     return self;
@@ -44,6 +49,10 @@
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
                                objects:(NSArray<id> *)objects {
+    if (self.tableView) {
+        [NSException raise:NSInvalidArgumentException format:@""];
+    }
+    
     self->_collectionView = collectionView;
     self->_objects = objects;
     return self;

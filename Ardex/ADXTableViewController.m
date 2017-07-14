@@ -59,6 +59,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
         
     } else {
+        asl_log_message(ASL_LEVEL_NOTICE, "[Ardex] Invlid cell classes inside datasource, outputting `UITableViewCell` instead.");
         UITableViewCell *cell = [UITableViewCell new];
         return cell;
     }

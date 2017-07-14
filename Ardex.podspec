@@ -9,16 +9,10 @@
 Pod::Spec.new do |s|
   s.name             = 'Ardex'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Ardex.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
+  s.summary          = 'A very very very short description of Ardex.'
+  
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+TODO: Add very very very very very long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/Off-Piste/Ardex'
@@ -30,6 +24,6 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'Ardex/**/**/*'
   s.public_header_files = 'Ardex/Public/**/**/*.h'
-  # s.private_header_files = 'Ardex/Private/**/**/*.h'
+  s.private_header_files = 'Ardex/Private/**/**/*.h'
   
 end
