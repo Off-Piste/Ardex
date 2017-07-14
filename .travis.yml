@@ -24,5 +24,5 @@ before_install:
   - open -a "simulator" --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID
 script:
   # travis_retry is a workaround for Error 65
-  - set -o pipefail && travis_retry xcodebuild test -workspace Example/Trolley.xcworkspace -scheme Trolley-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
-  - pod lib lint Trolley.podspec --verbose
+  - set -o pipefail && travis_retry xcodebuild test -workspace Example/Ardex.xcworkspace -scheme Ardex-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
+  - pod lib lint Ardex.podspec --verbose
