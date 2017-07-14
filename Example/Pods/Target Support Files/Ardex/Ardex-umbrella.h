@@ -10,12 +10,15 @@
 #endif
 #endif
 
-#import "ADXBasicCell.h"
+#import "ADXDatasource.h"
+#import "ADXBasicCollectionCell.h"
 #import "ADXCollectionView.h"
 #import "ADXCollectionViewCell.h"
 #import "ADXCollectionViewController.h"
-#import "ADXDatasource.h"
-#import "UICollectionView+Registerable.h"
+#import "ADXTableView.h"
+#import "ADXTableViewBasicCell.h"
+#import "ADXTableViewCell.h"
+#import "ADXTableViewController.h"
 #import "UIView+Anchoring.h"
 
 FOUNDATION_EXPORT double ArdexVersionNumber;

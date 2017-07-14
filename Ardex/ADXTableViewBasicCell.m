@@ -1,18 +1,14 @@
 //
-//  ADXBasicCell.m
+//  ADXTableViewBasicCell.m
 //  Pods
 //
-//  Created by Harry Wright on 13.07.17.
+//  Created by Harry Wright on 14.07.17.
 //
 //
 
-#import "ADXBasicCell.h"
+#import "ADXTableViewBasicCell.h"
 
-@interface ADXBasicCell ()
-
-@end
-
-@implementation ADXBasicCell
+@implementation ADXTableViewBasicCell
 
 + (NSString *)reuseID {
     return @"BasicCell";

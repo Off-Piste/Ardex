@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ADXCollectionViewCell.h"
-#import "ADXBasicCell.h"
+#import "ADXBasicCollectionCell.h"
+#import "ADXTableViewCell.h"
+#import "ADXTableViewBasicCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -49,7 +51,13 @@ NS_SWIFT_NAME(Datasource)
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath NS_SWIFT_NAME(item(at:));
 
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id> * _Nonnull collectionCellClasses;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id> *collectionCellClasses;
+
+- (ADXCollectionViewCell * _Nullable)collectionCellClassForIndexPath:(NSIndexPath *)indexPath;
+
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id> *tableCellClasses;
+
+- (ADXTableViewCell * _Nullable)tableViewCellClassForIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

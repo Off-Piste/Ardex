@@ -69,7 +69,19 @@
 }
 
 - (NSArray<id> *)collectionCellClasses {
-    return @[[ADXBasicCell copy]];
+    return @[[ADXBasicCollectionCell copy]];
+}
+
+- (NSArray<id> *)tableCellClasses {
+    return @[[ADXTableViewBasicCell copy]];
+}
+
+- (ADXCollectionViewCell *)collectionCellClassForIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (ADXTableViewCell *)tableViewCellClassForIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 - (void)reload {
