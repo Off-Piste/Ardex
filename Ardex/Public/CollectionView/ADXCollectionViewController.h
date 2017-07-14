@@ -6,7 +6,7 @@
 //  Copyright © 2017 Trolley. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ADXDatasource.h"
 
 /**

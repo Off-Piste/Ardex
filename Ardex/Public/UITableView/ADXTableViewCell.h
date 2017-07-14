@@ -6,10 +6,14 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ <#Description#>
+ */
+NS_SWIFT_NAME(TableViewCell)
 @interface ADXTableViewCell : UITableViewCell
 
 /**

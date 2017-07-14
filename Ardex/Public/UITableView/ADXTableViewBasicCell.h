@@ -9,6 +9,10 @@
 #import "ADXTableViewCell.h"
 #import "UIView+Anchoring.h"
 
+/**
+ <#Description#>
+ */
+NS_SWIFT_NAME(TableViewBasicCell)
 @interface ADXTableViewBasicCell : ADXTableViewCell
 
 /**

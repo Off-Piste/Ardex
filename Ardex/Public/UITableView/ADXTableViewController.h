@@ -6,11 +6,15 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ADXDatasource.h"
 #import "ADXTableViewCell.h"
 #import <asl.h>
 
+/**
+ <#Description#>
+ */
+NS_SWIFT_NAME(TableViewController)
 @interface ADXTableViewController : UITableViewController
 
 /**
