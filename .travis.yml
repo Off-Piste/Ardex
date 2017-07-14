@@ -16,6 +16,7 @@ before_install:
   - ls
   - pod repo update 
   - pod install
+  - cd -
 
   # Workaround for Error 65
   - export IOS_SIMULATOR_UDID=`instruments -s devices | grep "iPhone 7 (10.3.1" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
