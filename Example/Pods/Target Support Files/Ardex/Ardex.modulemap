@@ -1,6 +1,0 @@
-framework module Ardex {
-  umbrella header "Ardex-umbrella.h"
-
-  export *
-  module * { export * }
-}
