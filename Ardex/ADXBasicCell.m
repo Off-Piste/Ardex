@@ -8,6 +8,10 @@
 
 #import "ADXBasicCell.h"
 
+@interface ADXBasicCell ()
+
+@end
+
 @implementation ADXBasicCell
 
 + (NSString *)reuseID {
@@ -17,17 +21,22 @@
 - (void)configureCell {
     [super configureCell];
     
+    NSString *value;
     BOOL test = [self.datasourceItem isKindOfClass:[NSString class]];
     if (test) {
-        NSString *value = self.datasourceItem;
+        value = self.datasourceItem;
         (self.label).text = value;
     } else {
-        (self.label).text = [self.datasourceItem debugDescription];
+        (self.label).text = [NSString stringWithFormat:@"%@",
+                             self.datasourceItem];
     }
 }
 
 - (void)setupViews {
     [super setupViews];
+    
+    self.label = [[UILabel alloc] init];
+    self.label.textColor = [UIColor blackColor];
     
     [self addSubview:self.label];
     [self.label anchorForTop:self.topAnchor

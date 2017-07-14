@@ -16,19 +16,11 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) {
-//        self->_reuseID = [ADXCollectionViewCell reuseID];
-    }
-    
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self) {
-//        self->_reuseID = [ADXCollectionViewCell reuseID];
-    }
-    
     return self;
 }
 

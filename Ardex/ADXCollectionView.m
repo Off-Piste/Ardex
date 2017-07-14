@@ -42,7 +42,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    __block ADXCollectionViewCell *cell;
+    ADXCollectionViewCell *cell;
     if ((self.adxDatasource).collectionCellClasses.firstObject) {
         ADXCollectionViewCell *classes = (ADXCollectionViewCell *) (self.adxDatasource).collectionCellClasses.firstObject;
         NSString *reuseID = [[classes class] reuseID];

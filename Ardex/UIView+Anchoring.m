@@ -70,22 +70,26 @@
                                                   heightConstant:(CGFloat)heightConstant {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    NSMutableArray<NSLayoutConstraint *> *anchors;
+    NSMutableArray<NSLayoutConstraint *> *anchors = [[NSMutableArray alloc] init];
     
     if (top) {
-        [anchors addObject:[self.topAnchor constraintEqualToAnchor:top constant:topConstant]];
+        [anchors addObject:[self.topAnchor constraintEqualToAnchor:top
+                                                          constant:topConstant]];
     }
     
     if (bottom) {
-        [anchors addObject:[self.bottomAnchor constraintEqualToAnchor:bottom constant:-bottomConstant]];
+        [anchors addObject:[self.bottomAnchor constraintEqualToAnchor:bottom
+                                                             constant:-bottomConstant]];
     }
     
     if (left) {
-        [anchors addObject:[self.leftAnchor constraintEqualToAnchor:left constant:topConstant]];
+        [anchors addObject:[self.leftAnchor constraintEqualToAnchor:left
+                                                           constant:topConstant]];
     }
     
     if (right) {
-        [anchors addObject:[self.rightAnchor constraintEqualToAnchor:right constant:-rightConstant]];
+        [anchors addObject:[self.rightAnchor constraintEqualToAnchor:right
+                                                            constant:-rightConstant]];
     }
     
     if (widthConstant > 0) {

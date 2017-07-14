@@ -18,7 +18,13 @@
     [super viewDidLoad];
     
     self.datasource = [[ADXDatasource alloc] initWithCollectionView:self.collectionView];
-    (self.datasource).objects = @[@"Hello", @"World"];
+    (self.datasource).objects = @[@125, @"World"];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.view.frame.size.width, 50);
 }
 
 @end

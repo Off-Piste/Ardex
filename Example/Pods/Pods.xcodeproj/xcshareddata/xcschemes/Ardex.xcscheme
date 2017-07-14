@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E009D0E89AECF0A0EE6EC45BC81D31A"
+               BlueprintIdentifier = "0A10AC96EFBDF3D791B353ECA16182FC"
                BuildableName = "Ardex.framework"
                BlueprintName = "Ardex"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E009D0E89AECF0A0EE6EC45BC81D31A"
+            BlueprintIdentifier = "0A10AC96EFBDF3D791B353ECA16182FC"
             BuildableName = "Ardex.framework"
             BlueprintName = "Ardex"
             ReferencedContainer = "container:Pods.xcodeproj">

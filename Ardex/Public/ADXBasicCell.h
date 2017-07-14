@@ -11,6 +11,9 @@
 
 @interface ADXBasicCell : ADXCollectionViewCell
 
-@property (strong, nonnull) UILabel *label;
+/**
+ <#Description#>
+ */
+@property (nonatomic) UILabel *label;
 
 @end
