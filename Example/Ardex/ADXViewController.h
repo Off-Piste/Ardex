@@ -9,6 +9,6 @@
 @import UIKit;
 @import Ardex;
 
-@interface ADXViewController : ADXCollectionViewController <UICollectionViewDelegateFlowLayout>
+@interface ADXViewController : ADXCollectionViewController
 
 @end

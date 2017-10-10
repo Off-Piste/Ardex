@@ -24,6 +24,5 @@ TODO: Add very very very very very long description of the pod here.
 
   s.source_files = 'Ardex/**/**/*'
   s.public_header_files = 'Ardex/Public/**/**/*.h'
-  s.private_header_files = 'Ardex/Private/**/**/*.h'
   
 end

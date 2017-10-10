@@ -2,11 +2,31 @@
 //  ADXCollectionViewController.m
 //  Ardex
 //
-//  Created by Harry Wright on 11.07.17.
-//  Copyright © 2017 Trolley. All rights reserved.
+//  Created by Harry Wright on 10.10.17.
 //
 
 #import "ADXCollectionViewController.h"
+#import "ADXCollectionViewCell.h"
+#import "ADXDatasource.h"
+
+@import ObjectiveC;
+
+@interface UICollectionView (ADX)
+
+- (__kindof UICollectionViewCell *)dequeueReusableCell:(__kindof ADXCollectionViewCell *)cell
+                                 forIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@implementation UICollectionView (ADX)
+
+- (UICollectionViewCell *)dequeueReusableCell:(ADXCollectionViewCell *)cell
+                                 forIndexPath:(NSIndexPath *)indexPath {
+    return [self dequeueReusableCellWithReuseIdentifier: [[cell class] reuseID]
+                                           forIndexPath:indexPath];
+}
+
+@end
 
 @interface ADXCollectionViewController ()
 
@@ -14,62 +34,52 @@
 
 @implementation ADXCollectionViewController
 
-- (UIRefreshControl *)refreshControl {
-    UIRefreshControl *control = [[UIRefreshControl alloc] init];
-    control.tintColor = [UIColor lightGrayColor];
-    [control addTarget:self
-                action:@selector(refreshOptions)
-      forControlEvents:UIControlEventValueChanged];
-    
-    return control;
-}
-
-- (void)refreshOptions {
-    return;
-}
+- (void)refreshOptions { }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.collectionView.alwaysBounceVertical = YES;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return (self.datasource).numberOfSections;
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return [self.datasource numberOfSections];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section {
+     numberOfItemsInSection:(NSInteger)section
+{
     return [self.datasource numberOfItemsInSection:section];
 }
 
+/**
+ The middle statment on this is a slight pain, comming from
+ Swift we could do [ArrayObject.Type] which would technically pass
+ [Class] but Swift knows the type and can allow you to access the
+ +[reuseId] method but with Obj-C you can't :/
+ */
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ADXCollectionViewCell * _Nonnull cell;
-    
-    if ([(self.datasource) collectionCellClassForIndexPath:indexPath]) {
-        ADXCollectionViewCell *class = [(self.datasource) collectionCellClassForIndexPath:indexPath];
-        NSString *reuseID = [[class class] reuseID];
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
-        
-    } else if ((self.datasource).collectionCellClasses.firstObject) {
-        ADXCollectionViewCell *classes = (self.datasource).collectionCellClasses.firstObject;
-        NSString *reuseID = [[classes class] reuseID];
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
-        
-    } else if ((self.datasource).collectionCellClasses.count > indexPath.section) {
-        ADXCollectionViewCell *classes = (self.datasource).collectionCellClasses[indexPath.section];
-        NSString *reuseID = [[classes class] reuseID];
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseID forIndexPath:indexPath];
-        
+    ADXCollectionViewCell *_Nonnull cell;
+
+    ADXCollectionViewCell *_Nonnull _class;
+    if ((_class = [self.datasource cellClassForIndexPath:indexPath])) {
+        cell = [collectionView dequeueReusableCell:_class forIndexPath:indexPath];
+    } else if ((_class = [self.datasource cellClasses].firstObject)) {
+        cell = [collectionView dequeueReusableCell:_class forIndexPath:indexPath];
+    } else if ([self.datasource cellClasses] && [self.datasource cellClasses].count > indexPath.section) {
+        _class = [self.datasource cellClasses][indexPath.section];
+        cell = [collectionView dequeueReusableCell:_class forIndexPath:indexPath];
     } else {
-        UICollectionViewCell *cell = [UICollectionViewCell init];
-        return cell;
+        return [UICollectionViewCell new];
     }
-    
-    cell.datasourceItem = [_datasource itemAtIndexPath:indexPath];
+
+    cell.datasourceItem = [self.datasource itemAtIndexPath:indexPath];
     return cell;
 }
+
+
 
 @end

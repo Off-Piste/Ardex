@@ -2,32 +2,18 @@
 //  ADXCollectionViewController.h
 //  Ardex
 //
-//  Created by Harry Wright on 11.07.17.
-//  Copyright © 2017 Trolley. All rights reserved.
+//  Created by Harry Wright on 10.10.17.
 //
 
-@import UIKit;
-#import "ADXDatasource.h"
+#import <UIKit/UIKit.h>
+#import "ADXMacros.h"
 
-/**
- <#Description#>
- */
-NS_SWIFT_NAME(CollectionViewController)
-@interface ADXCollectionViewController : UICollectionViewController
+@class ADXDatasource;
 
-/**
- <#Description#>
- */
+ADX_CLASS_SUPER(CollectionViewController, UICollectionViewController)
+
 @property (strong, nullable) ADXDatasource *datasource;
 
-/**
- <#Description#>
- */
-@property (strong, readonly, nonnull) UIRefreshControl *refreshControl;
-
-/**
- <#Description#>
- */
 - (void)refreshOptions;
 
 @end

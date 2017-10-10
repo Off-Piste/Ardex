@@ -2,8 +2,7 @@
 //  ADXCollectionViewCell.m
 //  Ardex
 //
-//  Created by Harry Wright on 12.07.17.
-//  Copyright © 2017 Trolley. All rights reserved.
+//  Created by Harry Wright on 10.10.17.
 //
 
 #import "ADXCollectionViewCell.h"
@@ -11,26 +10,32 @@
 @implementation ADXCollectionViewCell
 
 + (NSString *)reuseID {
-    return @"Cell";
+    NSString *cls = NSStringFromClass(self);
+    return [cls componentsSeparatedByString:@"."].lastObject;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)init {
+    if (self = [super init]) {
+        [self lifeCycle];
+    }
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
+    if (self = [super initWithCoder:aDecoder]) {
+        [self lifeCycle];
+    }
     return self;
 }
 
-- (void)setDatasourceItem:(id)datasourceItem {
-    if (datasourceItem == nil) {
-        return;
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self lifeCycle];
     }
-    
-    self->_datasourceItem = datasourceItem;
-    
+    return self;
+}
+
+- (void)lifeCycle {
     [self setupViews];
     [self configureCell];
 }

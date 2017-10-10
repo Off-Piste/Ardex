@@ -1,132 +1,45 @@
 //
-//  Datasource.h
+//  ADXDatasource.h
 //  Ardex
 //
-//  Created by Harry Wright on 11.07.17.
-//  Copyright © 2017 Trolley. All rights reserved.
+//  Created by Harry Wright on 10.10.17.
 //
 
 #import <Foundation/Foundation.h>
-#import "ADXCollectionViewCell.h"
-#import "ADXBasicCollectionCell.h"
-#import "ADXTableViewCell.h"
-#import "ADXTableViewBasicCell.h"
+#import "ADXMacros.h"
 
-@import UIKit;
+@protocol ADXViewable;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- <#Description#>
+ @note - If you are wanting to use a SwiftsSubclass in an Objective-C class,
+ make sure you call `[[... alloc]initWithView:]` or `[[... alloc]initWithView:objects:]`
+ otherwise your class will never get called.
  */
-NS_SWIFT_NAME(Datasource)
-@interface ADXDatasource : NSObject
+ADX_CLASS(Datasource)
 
-/**
- <#Description#>
- */
-@property (strong, nullable) UITableView *tableView;
+@property (strong, nonnull) NSArray *objects;
 
-/**
- <#Description#>
- */
-@property (strong, nullable) UICollectionView *collectionView;
+- (instancetype)init NS_UNAVAILABLE;
 
-/**
- <#Description#>
- */
-@property (strong, nonatomic) NSArray<id> *objects;
++ (instancetype)new NS_UNAVAILABLE;
 
-#pragma mark - Init
++ (instancetype)datasourceForView:(nullable id<ADXViewable>)view NS_SWIFT_UNAVAILABLE("Please use `init(view:objects:)`");
 
-/**
- <#Description#>
+- (instancetype)initWithView:(nullable id<ADXViewable>)view;
 
- @param tableView <#tableView description#>
- @return <#return value description#>
- */
-- (instancetype)initWithTableView:(UITableView * _Nullable)tableView;
+- (instancetype)initWithView:(nullable id<ADXViewable>)view objects:(NSArray *)objects;
 
-/**
- <#Description#>
+- (NSArray<id> *)cellClasses;
 
- @param tableView <#tableView description#>
- @param objects <#objects description#>
- @return <#return value description#>
- */
-- (instancetype)initWithTableView:(UITableView * _Nullable)tableView
-                          objects:(NSArray<id> *)objects;
+- (nullable id)cellClassForIndexPath:(NSIndexPath *)indexPath NS_SWIFT_NAME(cellClass(for:));
 
-/**
- <#Description#>
+- (NSInteger)numberOfSections;
 
- @param collectionView <#collectionView description#>
- @return <#return value description#>
- */
-- (instancetype)initWithCollectionView:(UICollectionView * _Nullable)collectionView;
+- (NSInteger)numberOfItemsInSection:(NSInteger)section NS_SWIFT_NAME(numberOfItems(in:));
 
-/**
- <#Description#>
-
- @param collectionView <#collectionView description#>
- @param objects <#objects description#>
- @return <#return value description#>
- */
-- (instancetype)initWithCollectionView:(UICollectionView * _Nullable)collectionView
-                               objects:(NSArray<id> *)objects;
-
-#pragma mark - Setters
-
-- (void)setObjects:(NSArray<id> * _Nonnull)objects;
-
-#pragma mark - Datasource Methods
-
-/**
- <#Description#>
- */
-@property (NS_NONATOMIC_IOSONLY, readonly) long numberOfSections;
-
-/**
- <#Description#>
-
- @param section <#section description#>
- @return <#return value description#>
- */
-- (long)numberOfItemsInSection:(long)section NS_SWIFT_NAME(numberOfItems(in:));
-
-/**
- <#Description#>
-
- @param indexPath <#indexPath description#>
- @return <#return value description#>
- */
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath NS_SWIFT_NAME(item(at:));
-
-/**
- <#Description#>
- */
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id> *collectionCellClasses;
-
-/**
- <#Description#>
-
- @param indexPath <#indexPath description#>
- @return <#return value description#>
- */
-- (ADXCollectionViewCell * _Nullable)collectionCellClassForIndexPath:(NSIndexPath *)indexPath;
-
-/**
- <#Description#>
- */
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id> *tableCellClasses;
-
-/**
- <#Description#>
-
- @param indexPath <#indexPath description#>
- @return <#return value description#>
- */
-- (ADXTableViewCell * _Nullable)tableViewCellClassForIndexPath:(NSIndexPath *)indexPath;
+- (nullable id)itemAtIndexPath:(NSIndexPath *)indexPath NS_SWIFT_NAME(item(at:));
 
 @end
 

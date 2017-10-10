@@ -1,107 +1,86 @@
 //
-//  Datasource.m
+//  ADXDatasource.m
 //  Ardex
 //
-//  Created by Harry Wright on 11.07.17.
-//  Copyright © 2017 Trolley. All rights reserved.
+//  Created by Harry Wright on 10.10.17.
 //
 
 #import "ADXDatasource.h"
+#import "ADXViewable.h"
 
-@implementation ADXDatasource
+#import "ADXCollectionViewCell.h"
 
-- (void)setObjects:(NSArray<id> *)objects {
-    if (objects.count == 0) {
-        NSLog(@"[Ardex] Objects passed though (%s) were empty", __PRETTY_FUNCTION__);
-        return;
+@implementation ADXDatasource {
+    id<ADXViewable> _view;
+    NSArray *_objects;
+}
+
+#pragma mark Properties
+
+- (NSArray *)objects {
+    return _objects;
+}
+
+- (void)setObjects:(NSArray *)objects {
+    if (objects.count == 0) { return; }
+    _objects = objects;
+    
+    [_view reload];
+}
+
+#pragma mark LifeCycle
+
++ (instancetype)datasourceForView:(id<ADXViewable>)view {
+    return [[ADXDatasource alloc] initWithView:view];
+}
+
+- (instancetype)initWithView:(id<ADXViewable>)view {
+    return [self initWithView:view objects:@[].copy];
+}
+
+- (instancetype)initWithView:(id<ADXViewable>)view objects:(NSArray *)objects {
+    if (self = [super init]) {
+        NSAssert(view, @"Cannot create a datasource for a nil view");
+        self->_view = view;
+        self->_objects = objects;
     }
-    
-    self->_objects = objects;
-    [self reload];
-}
-
-- (instancetype)init {
-    [NSException raise:NSGenericException
-            format:@"Please use `initWithTableView:` "
-                   @"or `initWithCollectionView:` instead"];
-    
-    return nil;
-}
-
-- (instancetype)initWithTableView:(UITableView *)tableView {
-    return [self initWithTableView:tableView objects:@[]];
-}
-
-- (instancetype)initWithTableView:(UITableView *)tableView
-                          objects:(NSArray<id> *)objects {
-    if (self.collectionView) {
-        [NSException raise:NSInvalidArgumentException format:@""];
-    }
-    
-    self->_tableView = tableView;
-    self->_objects = objects;
     return self;
 }
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView {
-    return [self initWithCollectionView:collectionView objects:@[]];
-}
+#pragma mark Datasource Methods
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                               objects:(NSArray<id> *)objects {
-    if (self.tableView) {
-        [NSException raise:NSInvalidArgumentException format:@""];
-    }
-    
-    self->_collectionView = collectionView;
-    self->_objects = objects;
-    return self;
-}
-
-- (long)numberOfSections {
-    return 1;
-}
-
-- (long)numberOfItemsInSection:(long)section {
-    return (long) self.objects.count;
-}
-
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.collectionView) {
-        return self.objects[indexPath.item];
-    } else if (self.tableView) {
-        return self.objects[indexPath.row];
+- (NSArray<id> *)cellClasses {
+    if ([_view isKindOfClass:[UICollectionView class]]) {
+        return @[[ADXCollectionViewCell class]];
+    } else if ([_view isKindOfClass:[UITableView class]]) {
+        // TODO: ...
+        return nil;
     } else {
         [NSException raise:NSGenericException format:@""];
         return nil;
     }
 }
 
-- (NSArray<id> *)collectionCellClasses {
-    return @[[ADXBasicCollectionCell copy]];
-}
-
-- (NSArray<id> *)tableCellClasses {
-    return @[[ADXTableViewBasicCell copy]];
-}
-
-- (ADXCollectionViewCell *)collectionCellClassForIndexPath:(NSIndexPath *)indexPath {
+- (Class)cellClassForIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 
-- (ADXTableViewCell *)tableViewCellClassForIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+- (NSInteger)numberOfSections {
+    return 1;
 }
 
-- (void)reload {
-    if (self.tableView) {
-        [self.tableView reloadData];
-    } else if (self.collectionView) {
-        [self.collectionView reloadData];
+- (NSInteger)numberOfItemsInSection:(NSInteger)section {
+    return self.objects.count;
+}
+
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_view isKindOfClass:[UICollectionView class]]) {
+        return _objects[indexPath.item];
+    } else if ([_view isKindOfClass:[UITableView class]]) {
+        return _objects[indexPath.row];
     } else {
-        [NSException raise:NSGenericException
-                    format:@"The UITableView or UICollectionView needs to "
-                           @"be set before the objects"];
+        [NSException raise:NSGenericException format:@""];
+        return nil;
     }
 }
 
