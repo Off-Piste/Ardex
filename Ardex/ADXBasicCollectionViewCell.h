@@ -7,6 +7,7 @@
 
 #import "ADXCollectionViewCell.h"
 
+ADX_SUBCLASSING_RESTRICTED
 ADX_CLASS(BasicCollectionViewCell, ADXCollectionViewCell)
 
 @end

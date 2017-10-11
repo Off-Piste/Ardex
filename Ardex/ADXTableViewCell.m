@@ -14,7 +14,7 @@
 }
 
 - (void)setDatasourceItem:(id)datasourceItem {
-    _object = datasourceItem;
+    _object = datasourceItem ? datasourceItem : [NSNull null];
     [self configureCell];
 }
 

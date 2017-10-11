@@ -15,7 +15,7 @@ extension CGFloat {
     }
 }
 
-@objc public final class Cell: BasicCollectionViewCell {
+@objc public final class Cell: CollectionViewCell {
 
     public override func setupViews() {
         super.setupViews()
@@ -26,6 +26,23 @@ extension CGFloat {
             blue: .random,
             alpha: 1
         )
+    }
+
+    public override func configureCell() {
+        super.configureCell()
+
+        let label: UILabel = {
+            let label: UILabel = UILabel(
+                frame: CGRect(
+                    origin: CGPoint(x: 16, y: 0),
+                    size: self.bounds.size
+                )
+            )
+            label.text = "\(self.datasourceItem)"
+            return label
+        }()
+
+        self.addSubview(label)
     }
 
 }

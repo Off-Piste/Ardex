@@ -6,6 +6,7 @@
 //
 
 #import "ADXCollectionViewCell.h"
+#import "ADXLog.h"
 
 @implementation ADXCollectionViewCell
 
@@ -14,8 +15,7 @@
 }
 
 - (void)setDatasourceItem:(id)datasourceItem {
-    ADXLog(@"");
-    _object = datasourceItem;
+    _object = datasourceItem ? datasourceItem : [NSNull null];
     [self configureCell];
 }
 
@@ -26,7 +26,6 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        ADXLog(@"");
         [self lifeCycle];
     }
     return self;
@@ -34,7 +33,6 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        ADXLog(@"");
         [self lifeCycle];
     }
     return self;
@@ -42,7 +40,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        ADXLog(@"");
         [self lifeCycle];
     }
     return self;
@@ -52,8 +49,8 @@
     [self setupViews];
 }
 
-- (void)setupViews { ADXLog(@""); }
+- (void)setupViews { }
 
-- (void)configureCell { ADXLog(@""); }
+- (void)configureCell { }
 
 @end

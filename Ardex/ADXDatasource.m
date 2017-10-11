@@ -9,6 +9,11 @@
 #import "ADXViewable.h"
 
 #import "ADXCollectionViewCell.h"
+#import "ADXTableViewCell.h"
+
+#import "ADXAssert.h"
+
+BOOL kADXShouldReloadOnEmpty = NO;
 
 @implementation ADXDatasource {
     id<ADXViewable> _view;
@@ -22,9 +27,8 @@
 }
 
 - (void)setObjects:(NSArray *)objects {
-    if (objects.count == 0) { return; }
+    if (objects.count == 0) { if (kADXShouldReloadOnEmpty) { [_view reload]; } return; }
     _objects = objects;
-
     [_view reload];
 }
 
@@ -40,7 +44,10 @@
 
 - (instancetype)initWithView:(id<ADXViewable>)view objects:(NSArray *)objects {
     if (self = [super init]) {
-        NSAssert(view, @"Cannot create a datasource for a nil view");
+        ADXAssertMainThread();
+        ADXAssert(view, @"Cannot create a datasource for a nil view");
+        ADXAssert(objects, @"Cannot create a datasource for a nil objects, please use -[initWithView:] instead");
+
         self->_view = view;
         self->_objects = objects;
     }
@@ -49,16 +56,19 @@
 
 #pragma mark Datasource Methods
 
+- (BOOL)isValid {
+    return [_view isKindOfClass:[UICollectionView class]] || [_view isKindOfClass:[UITableView class]];
+}
+
 - (NSArray<id> *)cellClasses {
+    ADXAssert([self isValid], @"Can only work with UICollectionView or UITableView");
+
     if ([_view isKindOfClass:[UICollectionView class]]) {
         return @[[ADXCollectionViewCell class]];
     } else if ([_view isKindOfClass:[UITableView class]]) {
-        // TODO: ...
-        return nil;
-    } else {
-        [NSException raise:NSGenericException format:@""];
-        return nil;
+        return @[[ADXTableViewCell class]];
     }
+    return nil;
 }
 
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath {
@@ -74,16 +84,14 @@
 }
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath {
+    ADXAssert([self isValid], @"Can only work with UICollectionView or UITableView");
+
     if ([_view isKindOfClass:[UICollectionView class]]) {
-//        ADXLog(@"indexPath: %@ object:%@", indexPath, self.objects[indexPath.item]);
         return self.objects[indexPath.item];
     } else if ([_view isKindOfClass:[UITableView class]]) {
-//        ADXLog(@"indexPath: %@ object:%@", indexPath, self.objects[indexPath.row]);
         return self.objects[indexPath.row];
-    } else {
-        [NSException raise:NSGenericException format:@""];
-        return nil;
     }
+    return nil;
 }
 
 @end

@@ -8,6 +8,8 @@
 #ifndef ADXViewable_h
 #define ADXViewable_h
 
+@import Foundation;
+
 #import "ADXMacros.h"
 
 /**
@@ -16,8 +18,12 @@
  it will throw a NSException for when you try to access a UITableViewCell for a
  collectionView or ViceVersa.
  */
-ADX_PROTOCOL(Viewable)
+ADX_SWIFT_NAME(Viewable)
+@protocol ADXViewable <NSObject>
 
+/**
+ Method used to call -[reloadData:] from inside the UICollectionView and UITableView.
+ */
 - (void)reload;
 
 @end

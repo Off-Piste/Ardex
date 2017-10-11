@@ -12,6 +12,18 @@
 
 #import "Ardex_Example-Swift.h"
 
+@interface DatasourceNew: ADXDatasource
+
+@end
+
+@implementation DatasourceNew
+
+- (NSArray<id> *)cellClasses {
+    return [Cell self];
+}
+
+@end
+
 @interface ADXViewController ()
 
 @end
@@ -21,7 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    kADXShouldReloadOnEmpty = YES;
     self.datasource = [[DS alloc] initWithView:self.collectionView];
     self.datasource.objects = @[@1, @5, @100, @88, @200];
 }

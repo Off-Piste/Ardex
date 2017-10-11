@@ -8,20 +8,37 @@
 #ifndef ADXCellable_h
 #define ADXCellable_h
 
+@import Foundation;
+
 #import "ADXMacros.h"
 
 /**
  ADXCellable is the protocol that all Cells conform to (Table & Collection)
  so if we have to add or remove methods we can easily do so from here.
  */
-ADX_PROTOCOL(Cellable)
+ADX_SWIFT_NAME(Cellable)
+@protocol ADXCellable <NSObject>
 
-@property (strong, nullable) id datasourceItem;
+/**
+ <#Description#>
+ */
+@property (strong, nonnull) id datasourceItem;
 
+/**
+ <#Description#>
+
+ @return <#return value description#>
+ */
 + (NSString *_Nonnull)reuseID;
 
+/**
+ <#Description#>
+ */
 - (void)configureCell;
 
+/**
+ <#Description#>
+ */
 - (void)setupViews;
 
 @end

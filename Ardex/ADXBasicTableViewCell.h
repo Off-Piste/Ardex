@@ -7,6 +7,7 @@
 
 #import "ADXTableViewCell.h"
 
+ADX_SUBCLASSING_RESTRICTED
 @interface ADXBasicTableViewCell : ADXTableViewCell
 
 @end
