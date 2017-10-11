@@ -15,9 +15,11 @@ extension CGFloat {
     }
 }
 
-@objc public final class Cell: ADXCollectionViewCell {
+@objc public final class Cell: BasicCollectionViewCell {
 
     public override func setupViews() {
+        super.setupViews()
+        
         self.backgroundColor = UIColor(
             red: .random,
             green: .random,

@@ -9,7 +9,7 @@
 #import "ADXCollectionViewCell.h"
 #import "ADXDatasource.h"
 
-@import ObjectiveC;
+#pragma mark UICollectionView+ADX
 
 @interface UICollectionView (ADX)
 
@@ -28,9 +28,7 @@
 
 @end
 
-@interface ADXCollectionViewController ()
-
-@end
+#pragma mark ADXCollectionViewController
 
 @implementation ADXCollectionViewController
 

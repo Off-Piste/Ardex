@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
  make sure you call `[[... alloc]initWithView:]` or `[[... alloc]initWithView:objects:]`
  otherwise your class will never get called.
  */
-ADX_CLASS(Datasource)
+ADX_CLASS(Datasource, NSObject)
 
 @property (strong, nonnull) NSArray *objects;
 

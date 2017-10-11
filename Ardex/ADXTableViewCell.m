@@ -1,20 +1,19 @@
 //
-//  ADXCollectionViewCell.m
+//  ADXTableViewCell.m
 //  Ardex
 //
 //  Created by Harry Wright on 10.10.17.
 //
 
-#import "ADXCollectionViewCell.h"
+#import "ADXTableViewCell.h"
 
-@implementation ADXCollectionViewCell
+@implementation ADXTableViewCell
 
 - (id)datasourceItem {
     return _object;
 }
 
 - (void)setDatasourceItem:(id)datasourceItem {
-    ADXLog(@"");
     _object = datasourceItem;
     [self configureCell];
 }
@@ -26,7 +25,6 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        ADXLog(@"");
         [self lifeCycle];
     }
     return self;
@@ -34,7 +32,6 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        ADXLog(@"");
         [self lifeCycle];
     }
     return self;
@@ -42,7 +39,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        ADXLog(@"");
         [self lifeCycle];
     }
     return self;
@@ -52,8 +48,8 @@
     [self setupViews];
 }
 
-- (void)setupViews { ADXLog(@""); }
+- (void)setupViews { }
 
-- (void)configureCell { ADXLog(@""); }
+- (void)configureCell { }
 
 @end

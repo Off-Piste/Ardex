@@ -10,7 +10,7 @@
 
 @class ADXDatasource;
 
-ADX_CLASS_SUPER(CollectionViewController, UICollectionViewController)
+ADX_CLASS(CollectionViewController, UICollectionViewController)
 
 @property (strong, nullable) ADXDatasource *datasource;
 

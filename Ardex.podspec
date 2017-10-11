@@ -22,7 +22,7 @@ TODO: Add very very very very very long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Ardex/**/**/*'
-  s.public_header_files = 'Ardex/Public/**/**/*.h'
+  s.source_files = 'Ardex/**/*.{h,m}'
+  s.public_header_files = 'Ardex/**/*.h'
   
 end

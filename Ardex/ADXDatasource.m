@@ -24,7 +24,7 @@
 - (void)setObjects:(NSArray *)objects {
     if (objects.count == 0) { return; }
     _objects = objects;
-    
+
     [_view reload];
 }
 
@@ -75,9 +75,11 @@
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath {
     if ([_view isKindOfClass:[UICollectionView class]]) {
-        return _objects[indexPath.item];
+//        ADXLog(@"indexPath: %@ object:%@", indexPath, self.objects[indexPath.item]);
+        return self.objects[indexPath.item];
     } else if ([_view isKindOfClass:[UITableView class]]) {
-        return _objects[indexPath.row];
+//        ADXLog(@"indexPath: %@ object:%@", indexPath, self.objects[indexPath.row]);
+        return self.objects[indexPath.row];
     } else {
         [NSException raise:NSGenericException format:@""];
         return nil;
