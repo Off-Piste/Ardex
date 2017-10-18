@@ -23,7 +23,6 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A95FCCD2792D13D3150F8A0F /* Pods_Ardex_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002264195DAFCEA0B72BE315 /* Pods_Ardex_Example.framework */; };
 		C6E08D9CC90B40A76256C7B3 /* Pods_Ardex_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7083833F7120B8B4F4C1F20B /* Pods_Ardex_Tests.framework */; };
-		C819A6971F8D03EF00B0D188 /* ADXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819A6961F8D03EF00B0D188 /* ADXCollectionViewController.swift */; };
 		C8F330611F17F55A0067742E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8F3305F1F17F55A0067742E /* InfoPlist.strings */; };
 		C8F3306E1F1810520067742E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F3306D1F1810520067742E /* File.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +66,6 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		933B673EC318A24218E941EC /* Pods-Ardex_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ardex_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ardex_Tests/Pods-Ardex_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C819A6951F8D03EF00B0D188 /* Ardex_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ardex_Example-Bridging-Header.h"; sourceTree = "<group>"; };
-		C819A6961F8D03EF00B0D188 /* ADXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADXCollectionViewController.swift; sourceTree = "<group>"; };
 		C8F3305F1F17F55A0067742E /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		C8F330601F17F55A0067742E /* Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		C8F3306C1F1810520067742E /* Ardex_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ardex_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* ADXViewController.h */,
 				6003F5A6195388D20070C39A /* ADXViewController.m */,
-				C819A6961F8D03EF00B0D188 /* ADXCollectionViewController.swift */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -410,7 +407,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C819A6971F8D03EF00B0D188 /* ADXCollectionViewController.swift in Sources */,
 				6003F59E195388D20070C39A /* ADXAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* ADXViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
@@ -599,7 +595,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 933B673EC318A24218E941EC /* Pods-Ardex_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = FVT8X28ANV;
@@ -630,7 +625,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BC127B90014B91E95199BE9 /* Pods-Ardex_Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = FVT8X28ANV;

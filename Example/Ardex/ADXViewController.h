@@ -9,6 +9,7 @@
 @import UIKit;
 @import Ardex;
 
-@interface ADXViewController : ADXCollectionViewController
+@interface ADXViewController : UIViewController
 
 @end
+

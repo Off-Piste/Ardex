@@ -6,11 +6,33 @@
 //  Copyright (c) 2017 harrytwright. All rights reserved.
 //
 
+@import Ardex;
+
 @interface ADXDatasource_Test : QuickSpec
 
 @end
 
 @implementation ADXDatasource_Test
+
+- (void)spec {
+    describe(@"ADXDatasource", ^{
+        context(@"Adding objects", ^{
+            it(@"Will pass", ^{
+                // Given
+                ADXDatasource *ds = [[ADXDatasource alloc] init];
+                ADXListView *listView = [[ADXListView alloc] init];
+
+                // Then, When
+                listView.datasource = ds;
+                expect(listView.datasource.objects).to(beEmpty());
+
+                // Then, When
+                listView.datasource.objects = @[@"Hello", @"World"];
+                expect(listView.datasource.objects).toNot(beEmpty());
+            });
+        });
+    });
+}
 
 //- (void)spec {
 //    describe(@"ADXDatasource", ^{

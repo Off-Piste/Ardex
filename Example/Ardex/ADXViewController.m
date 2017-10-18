@@ -8,42 +8,67 @@
 
 #import "ADXViewController.h"
 
-#import "Ardex_Example-Bridging-Header.h"
+@interface Post : NSObject <ADXObject>
 
-#import "Ardex_Example-Swift.h"
+@property (strong, nonatomic) NSString *name;
 
-@interface DatasourceNew: ADXDatasource
+- (instancetype)initWithName:(NSString *)name;
 
 @end
 
-@implementation DatasourceNew
+@implementation Post
 
-- (NSArray<id> *)cellClasses {
-    return [Cell self];
+- (instancetype)initWithName:(NSString *)name {
+    if (self = [super init]) {
+        self->_name = name;
+    }
+    return self;
+}
+
+- (id<NSObject>)index {
+    return @(self.hash);
 }
 
 @end
 
 @interface ADXViewController ()
 
+@property (nonatomic, strong) ADXListView *listView;
+
 @end
 
 @implementation ADXViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    kADXShouldReloadOnEmpty = YES;
-    self.datasource = [[DS alloc] initWithView:self.collectionView];
-    self.datasource.objects = @[@1, @5, @100, @88, @200];
+    ADXDatasource *datasource = [[ADXDatasource alloc] init];
+    self.listView = [[ADXListView alloc] init];
+    self.listView.datasource = datasource;
+
+    [self.view addSubview:self.listView];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.view.frame.size.width, 50);
+- (void)viewDidLayoutSubviews {
+    self.listView.frame = [self.view frame];
+    self.listView.backgroundColor = [UIColor lightGrayColor];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    self.listView.datasource.objects = @[@[@"Hello"], @[@"World"]];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(50 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.listView.datasource.objects = @[@[@"Hello"]];
+    });
+}
+
+//- (NSArray<id<ADXObject>> *)objectsInListView:(ADXListView *)listView {
+//    Post *post = [[Post alloc] initWithName:@"Alpha"];
+//    return @[post];
+//}
 
 @end
+
 

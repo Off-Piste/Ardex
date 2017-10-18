@@ -16,10 +16,6 @@
 #endif // #if defined(__has_attribute) && __has_attribute(objc_subclassing_restricted)
 #endif // #ifndef ADX_SUBCLASSING_RESTRICTED
 
-#define ADX_CLASS(classname, superclass) \
-NS_SWIFT_NAME(classname) \
-@interface ADX##classname : superclass \
-
 #ifdef __IPHONE_9_3
     #define ADX_SWIFT_NAME(X) NS_SWIFT_NAME(X)
 #else

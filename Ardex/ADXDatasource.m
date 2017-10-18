@@ -2,96 +2,87 @@
 //  ADXDatasource.m
 //  Ardex
 //
-//  Created by Harry Wright on 10.10.17.
+//  Created by Harry Wright on 16.10.17.
 //
 
 #import "ADXDatasource.h"
-#import "ADXViewable.h"
+#import "Internal/ADXDatasourceBase.h"
+#import "Internal/ADXDatasource+UICollectionView.h"
 
-#import "ADXCollectionViewCell.h"
-#import "ADXTableViewCell.h"
+#import "ADXListView.h"
+#import "Internal/ADXListView+DataSource.h"
 
-#import "ADXAssert.h"
-
-BOOL kADXShouldReloadOnEmpty = NO;
+//@interface ADXDatasource ()
+//
+//@end
 
 @implementation ADXDatasource {
-    id<ADXViewable> _view;
-    NSArray *_objects;
-}
-
-#pragma mark Properties
-
-- (NSArray *)objects {
-    return _objects;
-}
-
-- (void)setObjects:(NSArray *)objects {
-    if (objects.count == 0) { if (kADXShouldReloadOnEmpty) { [_view reload]; } return; }
-    _objects = objects;
-    [_view reload];
+    id _queue_objects;
+    __weak ADXListView *_listView;
 }
 
 #pragma mark LifeCycle
 
-+ (instancetype)datasourceForView:(id<ADXViewable>)view {
-    return [[ADXDatasource alloc] initWithView:view];
+- (instancetype)init {
+    return [self initWithObjects:@[].copy];
 }
 
-- (instancetype)initWithView:(id<ADXViewable>)view {
-    return [self initWithView:view objects:@[].copy];
-}
-
-- (instancetype)initWithView:(id<ADXViewable>)view objects:(NSArray *)objects {
+- (instancetype)initWithObjects:(id)objects {
     if (self = [super init]) {
-        ADXAssertMainThread();
-        ADXAssert(view, @"Cannot create a datasource for a nil view");
-        ADXAssert(objects, @"Cannot create a datasource for a nil objects, please use -[initWithView:] instead");
+        self->_base = [ADXDatasourceBase new];
+        self->_queue_objects = objects;
 
-        self->_view = view;
-        self->_objects = objects;
+        [self publicSettingChanged];
     }
     return self;
 }
 
-#pragma mark Datasource Methods
+#pragma mark Properties
 
-- (BOOL)isValid {
-    return [_view isKindOfClass:[UICollectionView class]] || [_view isKindOfClass:[UITableView class]];
+- (ADXListView *)listView {
+    return _listView;
 }
 
-- (NSArray<id> *)cellClasses {
-    ADXAssert([self isValid], @"Can only work with UICollectionView or UITableView");
+- (void)setListView:(ADXListView * _Nullable)listView {
+    _listView = listView;
 
-    if ([_view isKindOfClass:[UICollectionView class]]) {
-        return @[[ADXCollectionViewCell class]];
-    } else if ([_view isKindOfClass:[UITableView class]]) {
-        return @[[ADXTableViewCell class]];
+    [_listView superSetDataSource:self];
+    [_listView setDelegate:self];
+    [self publicSettingChanged];
+}
+
+- (id)objects {
+    return self->_base.objects;
+}
+
+- (void)setObjects:(id)objects {
+    _queue_objects = objects;
+
+    [self publicSettingChanged];
+}
+
+#pragma mark PublicAPI
+
+- (UICollectionViewCell *)cellForObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self.listView dequeueCellClass:[UICollectionViewCell class]
+                                                    forIndexPath:indexPath];
+#ifdef DEBUG
+    if (indexPath.section == 0) {
+        cell.backgroundColor = [UIColor whiteColor];
+    } else {
+        cell.backgroundColor = [UIColor darkGrayColor];
     }
-    return nil;
+#endif //DEBUG
+    return cell;
 }
 
-- (Class)cellClassForIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
+#pragma mark PrivateAPI
 
-- (NSInteger)numberOfSections {
-    return 1;
-}
-
-- (NSInteger)numberOfItemsInSection:(NSInteger)section {
-    return self.objects.count;
-}
-
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath {
-    ADXAssert([self isValid], @"Can only work with UICollectionView or UITableView");
-
-    if ([_view isKindOfClass:[UICollectionView class]]) {
-        return self.objects[indexPath.item];
-    } else if ([_view isKindOfClass:[UITableView class]]) {
-        return self.objects[indexPath.row];
+- (void)publicSettingChanged {
+    if (_queue_objects != nil && self.listView != nil) {
+        self->_base.objects = _queue_objects;
+        [self.listView reloadData];
     }
-    return nil;
 }
 
 @end
