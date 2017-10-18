@@ -7,7 +7,10 @@
 
 #import "ADXDatasource.h"
 
-@interface ADXDatasource ()
+@interface ADXDatasource () {
+@protected
+    ADXDatasourceBase *_base;
+}
 
 /**
  The ListView for the datasource, this is the internal setter.

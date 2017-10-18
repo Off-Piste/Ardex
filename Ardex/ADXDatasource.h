@@ -18,10 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  <#Description#>
  */
 ADX_SWIFT_NAME(Datasource)
-@interface ADXDatasource : NSObject {
-    @protected
-    ADXDatasourceBase *_base;
-}
+@interface ADXDatasource : NSObject 
 
 /**
  The ListView for the datasource

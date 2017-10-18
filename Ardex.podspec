@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Ardex'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0-beta1'
   s.summary          = 'A very very very short description of Ardex.'
   
   s.description      = <<-DESC
@@ -18,11 +18,15 @@ TODO: Add very very very very very long description of the pod here.
   s.homepage         = 'https://github.com/Off-Piste/Ardex'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'harrytwright' => 'haroldtomwright@gmail.com' }
-  s.source           = { :git => 'https://github.com/Off-Piste/Ardex.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/Off-Piste/Ardex.git', :tag => '1.0.0-beta1' }
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Ardex/**/*.{h,m, swift}'
-  s.public_header_files = 'Ardex/*.h' + 'Ardex/Common/*.h'
+  s.source_files = 'Ardex/**/*.{h,hpp,m,mm,swift}'
+  s.public_header_files = [
+  'Ardex/ADXDatasource.h',
+  'Ardex/ADXListView.h',
+  'Ardex/Common/*.h'
+  ]
   
 end

@@ -6,6 +6,7 @@
 //
 
 #import "ADXDatasource+UICollectionView.h"
+#import "ADXDatasource+ADXListView.h"
 #import "ADXDatasourceBase.h"
 
 #import "ADXAssert.h"

@@ -6,6 +6,7 @@
 //
 
 #import "ADXDatasource.h"
+#import "Internal/ADXDatasource+ADXListView.h"
 #import "Internal/ADXDatasourceBase.h"
 #import "Internal/ADXDatasource+UICollectionView.h"
 
