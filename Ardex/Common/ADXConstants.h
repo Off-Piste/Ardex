@@ -8,8 +8,8 @@
 #ifndef ADXConstants_h
 #define ADXConstants_h
 
-typedef void(^ADXDataCompletionHandler)(BOOL finished);
-
-typedef void(^void_block)(void);
+//typedef void(^ADXDataCompletionHandler)(BOOL finished);
+//
+//typedef void(^void_block)(void);
 
 #endif /* ADXConstants_h */

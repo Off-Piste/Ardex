@@ -17,10 +17,10 @@ import Foundation
 
     ///:nodoc:
     @objc public var isNestedArray: Bool {
-        if self is [[Any]] { return true }
-        return false
+        return self is [[Any]]
     }
 
+    ///:nodoc:
     @objc public func flatern() -> NSArray {
         if self.isNestedArray {
             return (self as! ([[Any]])).reduce([], +) as NSArray
